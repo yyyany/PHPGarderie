@@ -1,0 +1,36 @@
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Fichiers d'environnement
+.env
+.env.*
+!.env.example
+
+# Dépendances
+/vendor/
+/node_modules/
+
+# Fichiers de cache
+*.cache
+*.log
+*.tmp
+
+# Fichiers de configuration IDE
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Fichiers de build
+/dist/
+/build/
+
+# Fichiers de sauvegarde
+*.bak
+*.swp
+*~
+
+# Fichiers de configuration local
+config.local.php
+*.local.php 
