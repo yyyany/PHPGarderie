@@ -1,36 +1,19 @@
-# Fichiers système
-.DS_Store
-Thumbs.db
-
-# Fichiers d'environnement
+/.phpunit.cache
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
 .env
-.env.*
-!.env.example
-
-# Dépendances
-/vendor/
-/node_modules/
-
-# Fichiers de cache
-*.cache
-*.log
-*.tmp
-
-# Fichiers de configuration IDE
-.idea/
-.vscode/
-*.sublime-project
-*.sublime-workspace
-
-# Fichiers de build
-/dist/
-/build/
-
-# Fichiers de sauvegarde
-*.bak
-*.swp
-*~
-
-# Fichiers de configuration local
-config.local.php
-*.local.php 
+.env.backup
+.env.production
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+auth.json
+npm-debug.log
+yarn-error.log
+/.fleet
+/.idea
+/.vscode
