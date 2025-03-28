@@ -8,19 +8,11 @@ use App\Models\State;
 class NurseryController extends Controller
 {
     public function index(){
-        //$nureries=Nursery::all();
-        //$states=State::all();
-       // return view('nursery', ['nurseries' => $nureries],['states' => $states]);
+        $nureries=Nursery::all();
+        $states=State::all();
+       return view('nursery', ['nurseries' => $nureries],['states' => $states]);
 
-
-
-
-
-
-
-
-
-       
+     
        return view('nursery');
     }
     public function add(Request $request){

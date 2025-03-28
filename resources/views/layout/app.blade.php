@@ -57,7 +57,7 @@
 </head>
 <body>
     <div class="logo-container">
-        <img src="/public/img/Screenshot 2025-03-27 112753.png" alt="L'univers Park Garderie">
+        <img src="/public/img/Garderie.png" alt="L'univers Park Garderie">
     </div>
     <div class="nav-container">
         @include('partials.navbar')
