@@ -1,3 +1,4 @@
 <ul class="nav-bar">
-    <li ><a href='/'>L'acceuil</a></li>
+    <li><a href="">Garderies</a></li>
+
 </ul>

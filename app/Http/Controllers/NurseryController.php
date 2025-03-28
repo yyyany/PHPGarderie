@@ -11,9 +11,6 @@ class NurseryController extends Controller
         $nureries=Nursery::all();
         $states=State::all();
        return view('nursery', ['nurseries' => $nureries],['states' => $states]);
-
-     
-       return view('nursery');
     }
     public function add(Request $request){
       
@@ -23,7 +20,7 @@ class NurseryController extends Controller
             if ($description_state != null) {
                 // Si c'est la description, tu peux récupérer l'ID correspondant à cette description
                 $id_state = State::where('description', $description_state)->pluck('id')->first();
-        
+         
                 // Créer un nouvel enregistrement Nursery avec l'ID de l'état
                 Nursery::create([
                     'name' => $request->name,

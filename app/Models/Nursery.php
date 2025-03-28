@@ -23,8 +23,8 @@ class Nursery extends Model
         'phone',
         'id_state'
     ];
-    public function comment()
+    public function state()
     {
-        return $this->belongsTo(Comment::class);
+        return $this->belongsTo(State::class,'id_state');
     }
 }

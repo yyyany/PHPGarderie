@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>L'Univers de la Garderie</title>
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+
         <style>
             body {
                 font-family: 'Figtree', sans-serif;
@@ -128,22 +121,7 @@
                 text-align: center;
             }
         </style>
-    </head>
-    <body>
-        <header>
-            <img src="{{ asset('../public/img/Garderie.png') }}" alt="L'Univers de la Garderie" class="logo">
-        </header>
-        
-        <nav class="navbar">
-            <a href="">Garderies</a>
-            <a href="">Dépenses</a>
-            <a href="">Commerces</a>
-            <a href="">Catégories de dépenses</a>
-            <a href="">Enfants</a>
-            <a href="">Éducateurs</a>
-            <a href="">Présences</a>
-            <a href="">Rapport</a>
-        </nav>
+   
         @extends('layout.app')
         @section('content')
         <div class="container">
@@ -172,7 +150,7 @@
                         <td>{{ $nursery->name }}</td>
                         <td>{{ $nursery->address }}</td>
                         <td>{{ $nursery->city }}</td>
-                        <td>{{ $nursery->state_name }}</td>
+                        <td>{{ $nursery->state->description}}</td>
                         <td>{{ $nursery->phone }}</td>
                         <td class="actions">
                             <td> <button><a href="{{ route('nursery.formModifyNursery', $nursery->id) }}">Modifier</a></button></td>
@@ -192,23 +170,23 @@
             <div class="form-section">
                 <form action="{{ route('nursery.add') }}" method="POST">
                     @csrf
-                    <div class="form-group">
+                    <div >
                         <label for="name">Nom :</label>
                         <input type="text" id="name" name="name" class="form-control" required>
                     </div>
                     
-                    <div class="form-group">
+                    <div >
                         <label for="address">Adresse :</label>
                         <input type="text" id="address" name="address" class="form-control" required>
                     </div>
                     
-                    <div class="form-group">
+                    <div >
                         <label for="city">Ville :</label>
                         <input type="text" id="city" name="city" class="form-control" required>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="state_name">Province :</label>class="form-control"
+                    <div >
+                        <label for="state_name">Province :</label>
                         <select id="state_name" name="state_name" class="form-control">
                             @foreach ($states as $state)
                                 <option value="{{ $state->description }}">{{ $state->description }}</option>
@@ -216,17 +194,17 @@
                         </select>
                     </div>
                     
-                    <div class="form-group">
+                    <div>
                         <label for="phone">Téléphone :</label>
-                        <input type="tel" id="phone" name="phone" class="form-control" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" required>
+                        <input type="tel" id="phone" name="phone" class="form-control" required>
                     </div>
                     
-                    <div class="form-group">
+                    <div >
                         <button type="submit" class="btn btn-success">Créer</button>
                     </div>
                 </form>
-                @endsection('content') 
+             
             </div>
         </div>
-    </body>
-</html> 
+    
+        @endsection('content') 

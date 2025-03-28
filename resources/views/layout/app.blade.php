@@ -56,9 +56,9 @@
     </style>
 </head>
 <body>
-    <div class="logo-container">
-        <img src="/public/img/Garderie.png" alt="L'univers Park Garderie">
-    </div>
+    <header>
+            <img src="{{ asset('../public/img/Garderie.png') }}" alt="L'Univers de la Garderie" class="logo">
+        </header>
     <div class="nav-container">
         @include('partials.navbar')
     </div>

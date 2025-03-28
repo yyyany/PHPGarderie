@@ -17,6 +17,6 @@
     </select>
     <label>Telephone</label>
     <input type="text" id="phone" name="phone" value="{{$nursery->phone  }}">
-    <input type="submit" value="Button">
+    <input type="submit" value="Modifier">
 </form>
 @endsection('content') 

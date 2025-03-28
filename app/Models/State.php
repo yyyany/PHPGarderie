@@ -18,7 +18,7 @@ class State extends Model
     protected $fillable = [
         'description',
     ];
-    public function Nursery(){
-        return $this->hasMany(Comment::class);
+    public function nursery(){
+        return $this->hasMany(Nursery::class);
     }
 }
