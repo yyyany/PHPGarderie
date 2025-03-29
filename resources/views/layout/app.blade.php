@@ -9,56 +9,13 @@
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .logo-container {
-            text-align: center;
-            padding: 20px 0;
-            background-color: white;
-            margin-bottom: 20px;
-        }
-        .logo-container img {
-            max-height: 150px;
-            width: auto;
-        }
-        .nav-container {
-            background-color: #e9f2f9;
-            padding: 10px 0;
-            margin-bottom: 20px;
-        }
-        .nav-container .nav {
-            justify-content: center;
-        }
-        .nav-container .nav-link {
-            color: #333;
-            padding: 8px 20px;
-            margin: 0 5px;
-            border-radius: 5px;
-        }
-        .nav-container .nav-link:hover {
-            background-color: #d1e7f6;
-        }
-        .container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-        .btn-group {
-            gap: 5px;
-        }
-        .table th {
-            background-color: #e9ecef;
-        }
-    </style>
+    @vite(['resources/css/app.css'])
+    @stack('styles')
 </head>
 <body>
     <header>
-            <img src="{{ asset('../public/img/Garderie.png') }}" alt="L'Univers de la Garderie" class="logo">
-        </header>
+        <img src="{{ asset('img/Garderie.png') }}" alt="L'Univers de la Garderie" class="logo">
+    </header>
     <div class="nav-container">
         @include('partials.navbar')
     </div>
