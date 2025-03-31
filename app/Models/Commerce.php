@@ -5,31 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-class Nursery extends Model
+class Commerce extends Model
 {
     use HasFactory;
-    
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-    public $timestamps=false;
+    public $timestamps = true;
     protected $fillable = [
-        'name',
+        'description',
         'address',
-        'city',
-        'phone',
-        'id_state'
+        'phone'
     ];
-    public function state()
-    {
-        return $this->belongsTo(State::class,'id_state');
-    }
 
     /**
-     * Get the expenses for this nursery.
+     * Get the expenses for this commerce.
      */
     public function expenses()
     {

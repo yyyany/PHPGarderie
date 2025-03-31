@@ -5,34 +5,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-class Nursery extends Model
+class CategorieDepense extends Model
 {
     use HasFactory;
-    
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-    public $timestamps=false;
+    protected $table = 'categoriesdepense';
+    public $timestamps = false;
     protected $fillable = [
-        'name',
-        'address',
-        'city',
-        'phone',
-        'id_state'
+        'description',
+        'pourcentage'
     ];
-    public function state()
-    {
-        return $this->belongsTo(State::class,'id_state');
-    }
 
     /**
-     * Get the expenses for this nursery.
+     * Get the expenses for this category.
      */
     public function expenses()
     {
-        return $this->hasMany(Expense::class);
+        return $this->hasMany(Expense::class, 'category_expense_id');
     }
 }
