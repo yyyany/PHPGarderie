@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('city');
             $table->string('phone');
-            $table->foreignId('id_State')->constrained();
+            $table->foreignId('id_state')->constrained('states');
         });
     }
 

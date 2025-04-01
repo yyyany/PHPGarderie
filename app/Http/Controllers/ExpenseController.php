@@ -11,23 +11,14 @@ use App\Models\CategorieDepense;
 
 class ExpenseController extends Controller
 {
-    public function index(Request $request){
-        $nursery_id = $request->get('nursery_id');
-        
-        $expenses = $nursery_id 
-            ? Expense::where('nursery_id', $nursery_id)->get() 
-            : Expense::all();
-            
-        $nurseries = Nursery::all();
-        $commerces = Commerce::all();
-        $categoriesExpenses = CategorieDepense::all();
-        
-        return view('expense', [
-            'expenses' => $expenses,
-            'nurseries' => $nurseries,
-            'commerces' => $commerces,
-            'categoriesExpenses' => $categoriesExpenses
-        ]);
+    public function index(){
+        $expenses=Expense::all();
+        $nurseries=Nursery::all();
+        $commerces=Commerce::all();
+        $categoriesExpenses=CategorieDepense::all();
+        dd($expenses);
+        dd($categoriesExpenses);
+       return view('expense', ['expenses' => $expenses],['nurseries' => $nurseries],['commerces' => $commerces],['categoriesExpenses' => $categoriesExpenses]);
     }
     
     public function add(Request $request){

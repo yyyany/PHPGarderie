@@ -35,7 +35,7 @@
                     <td>{{ $nursery->name }}</td>
                     <td>{{ $nursery->address }}</td>
                     <td>{{ $nursery->city }}</td>
-                    <td>{{ $nursery->state->description }}</td>
+                    <td>{{ $nursery->state?->description ?? 'N/A' }}</td>
                     <td>{{ $nursery->phone }}</td>
                     <td class="text-center">
                         <a href="{{ route('nursery.formModifyNursery', $nursery->id) }}" class="btn btn-primary">

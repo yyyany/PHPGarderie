@@ -14,7 +14,7 @@ class Expense extends Model
      *
      * @var array<int, string>
      */
-    public $timestamps = true;
+    public $timestamps = false;
     protected $fillable = [
         'dateTime',
         'amount',
