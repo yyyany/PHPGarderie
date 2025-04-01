@@ -47,7 +47,7 @@ class NurseryController extends Controller
         $nurseryFind = Nursery::find($id);
         $description_state = $request->state_name; // Récupère la description ou l'id de l'état selon ce qui est envoyé
         if ($description_state != null) {
-            // Si c'est la description, tu peux récupérer l'ID correspondant à cette description
+            // Si c'est la description, tu peux récupérer l'ID correspondant à cettee description
             $id_state = State::where('description', $description_state)->pluck('id')->first();
     // ce qui est en request c'est les truc passé en id pas comme le applciationweb peut envoyer un objet complet comme dto
         $nurseryFind->update([
