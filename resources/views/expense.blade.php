@@ -9,14 +9,15 @@
     <h1 class="mb-4">Gestion des dépenses</h1>
     
     <div class="form-group mb-4">
-        <select class="form-control" id="nursery_selector" onchange="window.location.href=this.value">
-            <option value="">Au pays des coccinelles</option>
-            @foreach($nurseries as $nursery)
-                <option value="{{ route('expense.index', ['nursery_id' => $nursery->id]) }}" {{ request()->get('nursery_id') == $nursery->id ? 'selected' : '' }}>
-                    {{ $nursery->name }}
-                </option>
-            @endforeach
-        </select>
+        <form method="GET" action="{{ route('expense.index') }}">
+            <select class="form-control" id="state_name" name="state_name" onchange="this.form.submit()">
+                @foreach($nurseries as $nursery)    
+                    <option value="{{ $nursery->name }}" {{ request()->get('state_name') == $nursery->name ? 'selected' : '' }}>
+                        {{ $nursery->name }}
+                    </option>
+                @endforeach
+            </select>
+        </form>
     </div>
     
     <div class="table-responsive">

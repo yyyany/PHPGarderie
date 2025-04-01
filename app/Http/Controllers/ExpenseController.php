@@ -12,8 +12,8 @@ use App\Models\CategorieDepense;
 class ExpenseController extends Controller
 {
     public function index(Request $request){
-        $nursery_id = $request->get('nursery_id');
-        
+        $nursery_description=$request->state_name;
+        $nursery_id =Nursery::where('name', $nursery_description)->pluck('id')->first();
         $expenses = $nursery_id 
             ? Expense::where('nursery_id', $nursery_id)->get() 
             : Expense::all();
