@@ -1,8 +1,8 @@
 <nav class="navbar">
-    <a href="">Garderies</a>
-    <a href="">Dépenses</a>
-    <a href="">Commerces</a>
-    <a href="">Catégories de dépense</a>
+    <a href="{{ route('nursery.index') }}">Garderies</a>
+    <a href="{{ route('expense.index') }}">Dépenses</a>
+    <a href="{{ route('commerce.index') }}">Commerces</a>
+    <a href="{{ route('categorie.index') }}">Catégories de dépense</a>
     <a href="">Enfants</a>
     <a href="">Éducateurs</a>
     <a href="">Présences</a>
