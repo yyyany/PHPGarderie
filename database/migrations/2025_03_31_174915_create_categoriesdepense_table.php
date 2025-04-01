@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('categoriesdepense', function (Blueprint $table) {
             $table->id();
-            $table->string('description', 50);
-            $table->decimal('pourcentage', 3, 2);
+            $table->string('description');
+            $table->decimal('pourcentage');
             $table->timestamps();
         });
     }

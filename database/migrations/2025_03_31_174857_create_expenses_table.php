@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('expenses', function (Blueprint $table) {
             $table->id();
             $table->dateTime('dateTime');
-            $table->decimal('amount', 13, 2);
+            $table->decimal('amount');
             $table->foreignId('nursery_id')->constrained();
             $table->foreignId('commerce_id')->constrained();
             $table->foreignId('category_expense_id')->constrained('categoriesdepense');

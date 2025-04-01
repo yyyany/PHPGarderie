@@ -31,8 +31,5 @@ class Nursery extends Model
     /**
      * Get the expenses for this nursery.
      */
-    public function expenses()
-    {
-        return $this->hasMany(Expense::class);
-    }
+
 }

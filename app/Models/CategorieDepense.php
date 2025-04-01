@@ -24,8 +24,4 @@ class CategorieDepense extends Model
     /**
      * Get the expenses for this category.
      */
-    public function expenses()
-    {
-        return $this->hasMany(Expense::class, 'category_expense_id');
-    }
 }

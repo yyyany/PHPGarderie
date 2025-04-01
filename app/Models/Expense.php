@@ -14,7 +14,7 @@ class Expense extends Model
      *
      * @var array<int, string>
      */
-    public $timestamps = false;
+    public $timestamps = true;
     protected $fillable = [
         'dateTime',
         'amount',
@@ -36,7 +36,7 @@ class Expense extends Model
      */
     public function commerce()
     {
-        return $this->belongsTo(Commerce::class, "nursery_id");
+        return $this->belongsTo(Commerce::class);
     }
 
     /**
