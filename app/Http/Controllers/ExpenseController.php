@@ -17,23 +17,7 @@ class ExpenseController extends Controller
         $expenses = $nursery_id 
             ? Expense::where('nursery_id', $nursery_id)->get() 
             : Expense::all();
-            /*            <!--request()->get('state_name') récupère la valeur du paramètre 'state_name' de l'URL
-               <option value="{{ $nursery->name }}" {{ request()->get('state_name') == $nursery->name ? 'selected' : '' }}>
-                             @foreach($nurseries as $nursery)    
-                    <option value="{{ $nursery->name }}" {{ request()->get('state_name') == $nursery->name ? 'selected' : '' }}>
-                        {{ $nursery->name }}
-                    </option>
-                @endforeach Methode facile-->
-                Dans la vue  */
-                /*$expense->category->description }} ca dans la vue aussi ca veut dire que il y a categorie qui ets une table en relation
-                avec expense ce qui fait i accede a category et puis description  */
-        /*
-        <h2 class="mb-3">Ajouter une nouvelle dépense</h2>
-        <form action="{{ route('expense.add') }}" method="POST">
-            @csrf
-            <input type="hidden" name="nursery_id" value="{{ request()->get('nursery_id') ?? $nurseries->first()->id ?? '' }}">
-            on peut faire comme ca comme on peut faire c eque vous allez voir dans le expense.blade
-         */
+            
         $nurseries = Nursery::all();
         $commerces = Commerce::all();
         $categoriesExpenses = CategorieDepense::all();
