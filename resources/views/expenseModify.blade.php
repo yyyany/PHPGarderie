@@ -45,7 +45,7 @@
                     <label for="category_name">Catégorie de dépense</label>
                     <select id="category_name" name="category_name" class="form-control">
                         @foreach ($categoriesExpenses as $category)
-                            <option value="{{ $category->description }}" {{ $expense->category && $expense->category->description == $category->description ? 'selected' : '' }}>
+                            <option value="{{ $category->description }}" {{ $expense->category->description == $category->description ? 'selected' : '' }}>
                                 {{ $category->description }}
                             </option>
                         @endforeach
@@ -59,7 +59,7 @@
                     <div>
                         @foreach($commerces as $commerce)
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="expense_commerce_name" id="commerce_{{ $commerce->id }}" value="{{ $commerce->description }}" {{ $expense->commerce && $expense->commerce->description == $commerce->description ? 'checked' : '' }}>
+                                <input class="form-check-input" type="radio" name="expense_commerce_name" id="commerce_{{ $commerce->id }}" value="{{ $commerce->description }}" {{  $expense->commerce->description == $commerce->description ? 'checked' : '' }}>
                                 <label class="form-check-label" for="commerce_{{ $commerce->id }}">{{ $commerce->description }}</label>
                             </div>
                         @endforeach

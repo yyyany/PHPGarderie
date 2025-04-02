@@ -12,14 +12,13 @@
         <form method="GET" action="{{ route('expense.index') }}">
             <select class="form-control" id="state_name" name="state_name" onchange="this.form.submit()">
                 @foreach($nurseries as $nursery)    
-                    <option value="{{ $nursery->name }}" {{ request()->get('state_name') == $nursery->name ? 'selected' : '' }}>
+                    <option value="{{ $nursery->name }}" {{ $nurseryName == $nursery->name ? 'selected' : '' }}>
                         {{ $nursery->name }}
                     </option>
                 @endforeach
             </select>
         </form>
     </div>
-    
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -47,8 +46,8 @@
                     <td>{{ $expense->dateTime }}</td>
                     <td>${{ number_format($expense->amount, 2) }}</td>
                     <td>${{ number_format($expense->amount * ($expense->category->pourcentage ?? 1), 2) }}</td>
-                    <td>{{ $expense->category->description ?? 'Non défini' }}</td>
-                    <td>{{ $expense->commerce->description ?? 'Non défini' }}</td>
+                    <td>{{ $expense->category->description }}</td>
+                    <td>{{ $expense->commerce->description}}</td>
                     <td class="text-center">
                         <a href="{{ route('expense.formModifyExpense', $expense->id) }}" class="btn btn-warning">
                             Modifier
@@ -73,7 +72,7 @@
         <h2 class="mb-3">Ajouter une nouvelle dépense</h2>
         <form action="{{ route('expense.add') }}" method="POST">
             @csrf
-            <input type="hidden" name="nursery_id" value="{{ request()->get('nursery_id') ?? $nurseries->first()->id ?? '' }}">
+            <input type="hidden" name="nursery_name" value="{{ $nurseryName }}">
             
             <div class="row">
                 <div class="col-md-4">

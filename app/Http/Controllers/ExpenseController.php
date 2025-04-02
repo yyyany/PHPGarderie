@@ -17,16 +17,32 @@ class ExpenseController extends Controller
         $expenses = $nursery_id 
             ? Expense::where('nursery_id', $nursery_id)->get() 
             : Expense::all();
-            
+            /*            <!--request()->get('state_name') récupère la valeur du paramètre 'state_name' de l'URL
+               <option value="{{ $nursery->name }}" {{ request()->get('state_name') == $nursery->name ? 'selected' : '' }}>
+                             @foreach($nurseries as $nursery)    
+                    <option value="{{ $nursery->name }}" {{ request()->get('state_name') == $nursery->name ? 'selected' : '' }}>
+                        {{ $nursery->name }}
+                    </option>
+                @endforeach Methode facile-->
+                Dans la vue  */
+                /*$expense->category->description }} ca dans la vue aussi ca veut dire que il y a categorie qui ets une table en relation
+                avec expense ce qui fait i accede a category et puis description  */
+        /*
+        <h2 class="mb-3">Ajouter une nouvelle dépense</h2>
+        <form action="{{ route('expense.add') }}" method="POST">
+            @csrf
+            <input type="hidden" name="nursery_id" value="{{ request()->get('nursery_id') ?? $nurseries->first()->id ?? '' }}">
+            on peut faire comme ca comme on peut faire c eque vous allez voir dans le expense.blade
+         */
         $nurseries = Nursery::all();
         $commerces = Commerce::all();
         $categoriesExpenses = CategorieDepense::all();
-        
         return view('expense', [
             'expenses' => $expenses,
             'nurseries' => $nurseries,
             'commerces' => $commerces,
-            'categoriesExpenses' => $categoriesExpenses
+            'categoriesExpenses' => $categoriesExpenses,
+            'nurseryName' => $nursery_description
         ]);
     }
     
@@ -35,13 +51,13 @@ class ExpenseController extends Controller
         $amount = $request->amount;
         $category_name = $request->category_name;
         $expense_commerce_name = $request->expense_commerce_name;
-        $nursery_id = $request->nursery_id;
+        $nursery_name= $request->nursery_name;
         
-        if ($category_name && $expense_commerce_name && $nursery_id) {
+        if ($category_name && $expense_commerce_name && $nursery_name) {
             // Récupérer les IDs à partir des descriptions
             $commerce_id = Commerce::where('description', $expense_commerce_name)->value('id');
             $category_id = CategorieDepense::where('description', $category_name)->value('id');
-            
+            $nursery_id=Nursery::where('name', $nursery_name)->pluck('id')->first();
             // Créer la dépense
             Expense::create([
                 'dateTime' => now(),
@@ -80,16 +96,13 @@ class ExpenseController extends Controller
         if (!$expense) {
             return redirect()->route('expense.index')->with('error', 'La dépense demandée n\'existe pas');
         }
-        
         $category_name = $request->category_name;
         $expense_commerce_name = $request->expense_commerce_name;
         $nursery_id = $request->nursery_id;
-        
         if ($category_name && $expense_commerce_name) {
             // Récupérer les IDs à partir des descriptions
             $commerce_id = Commerce::where('description', $expense_commerce_name)->value('id');
             $category_id = CategorieDepense::where('description', $category_name)->value('id');
-            
             // Mettre à jour la dépense
             $expense->update([
                 'dateTime' => $request->dateTime ?? $expense->dateTime,
