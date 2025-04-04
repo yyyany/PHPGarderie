@@ -28,8 +28,4 @@ class Nursery extends Model
         return $this->belongsTo(State::class,'id_state');
     }
 
-    /**
-     * Get the expenses for this nursery.
-     */
-
 }

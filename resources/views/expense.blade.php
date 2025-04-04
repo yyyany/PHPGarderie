@@ -12,7 +12,7 @@
         <form method="GET" action="{{ route('expense.index') }}">
             <select class="form-control" id="state_name" name="state_name" onchange="this.form.submit()">
                 @foreach($nurseries as $nursery)    
-                    <option value="{{ $nursery->name }}" {{ $nurseryName == $nursery->name ? 'selected' : '' }}>
+                    <option value="{{ $nursery->name }}" {{ isset($nurseryName) && $nurseryName == $nursery->name ? 'selected' : '' }}>
                         {{ $nursery->name }}
                     </option>
                 @endforeach

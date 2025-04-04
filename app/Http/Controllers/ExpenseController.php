@@ -12,8 +12,8 @@ use App\Models\CategorieDepense;
 class ExpenseController extends Controller
 {
     public function index(Request $request){
-        $nursery_description=$request->state_name;
-        $nursery_id =Nursery::where('name', $nursery_description)->pluck('id')->first();
+        $nursery_description = $request->state_name;
+        $nursery_id = Nursery::where('name', $nursery_description)->pluck('id')->first();
         $expenses = $nursery_id 
             ? Expense::where('nursery_id', $nursery_id)->get() 
             : Expense::all();
@@ -36,7 +36,6 @@ class ExpenseController extends Controller
         $category_name = $request->category_name;
         $expense_commerce_name = $request->expense_commerce_name;
         $nursery_name= $request->nursery_name;
-        
         if ($category_name && $expense_commerce_name && $nursery_name) {
             // Récupérer les IDs à partir des descriptions
             $commerce_id = Commerce::where('description', $expense_commerce_name)->value('id');
