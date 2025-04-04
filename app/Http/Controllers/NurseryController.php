@@ -61,11 +61,11 @@ class NurseryController extends Controller
         return redirect()->route('nursery.index');
     }
     public function delete($id){
-        $nurseryfind = Nursery::find($id);
-        if (!$nurseryfind) {
+        $nurseryFind = Nursery::find($id);
+        if (!$nurseryFind) {
             return redirect()->route('nursery.index')->with('error', 'Le post demandé n\'existe pas');
         }
-        $nurseryfind->delete();
+        $nurseryFind->delete();
         return redirect()->route('nursery.index');
             
     }
