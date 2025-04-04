@@ -7,18 +7,18 @@
 @section('content')
 <div class="container">
     <h1 class="mb-4">Gestion des dépenses</h1>
-    
-    <div class="form-group mb-4">
-        <form method="GET" action="{{ route('expense.index') }}">
-            <select class="form-control" id="state_name" name="state_name" onchange="this.form.submit()">
-                @foreach($nurseries as $nursery)    
-                    <option value="{{ $nursery->name }}" {{ isset($nurseryName) && $nurseryName == $nursery->name ? 'selected' : '' }}>
-                        {{ $nursery->name }}
-                    </option>
-                @endforeach
-            </select>
-        </form>
-    </div>
+<div class="form-group mb-4">
+    <form method="GET" action="{{ route('expense.index') }}">
+        <select class="form-control" id="name_nursery" name="name_nursery" onchange="this.form.submit()">
+            @foreach($nurseries as $nursery)    
+                <option value="{{ $nursery->name }}" {{ isset($nurseryName) && $nurseryName == $nursery->name ? 'selected' : '' }}>
+                    {{ $nursery->name }}
+                </option>
+            @endforeach
+        </select>
+    </form>
+</div>
+
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>

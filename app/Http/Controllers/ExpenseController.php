@@ -12,7 +12,13 @@ use App\Models\CategorieDepense;
 class ExpenseController extends Controller
 {
     public function index(Request $request){
-        $nursery_description = $request->state_name;
+        // Si aucune garderie n'est sélectionnée, on prend la première par défaut
+        $firstNursery = Nursery::first();
+        $defaultNurseryName = $firstNursery ? $firstNursery->name : '';
+        
+        // Utiliser state_name s'il existe, sinon utiliser la première garderie
+        $nursery_description = $request->state_name ?? $defaultNurseryName;
+        
         $nursery_id = Nursery::where('name', $nursery_description)->pluck('id')->first();
         $expenses = $nursery_id 
             ? Expense::where('nursery_id', $nursery_id)->get() 
@@ -58,7 +64,7 @@ class ExpenseController extends Controller
         $expense = Expense::find($id);
         
         if (!$expense) {
-            return redirect()->route('expense.index')->with('error', 'La dépense demandée n\'existe pas');
+            return redirect()->route('expense.index')->wi('error', 'La dépense demandée n\'existe pas');
         }
         
         $nurseries = Nursery::all();
