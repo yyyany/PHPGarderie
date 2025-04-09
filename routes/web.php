@@ -44,3 +44,11 @@ Route::delete('/commerce/delete/{id}',[CommerceController::class,'delete'])->nam
 Route::post('/commerce/add',[CommerceController::class,'add'])->name('commerce.add');
 Route::post('/commerce/update/{id}',[CommerceController::class,'update'])->name('commerce.update');
 Route::get('/commerce/formModifyCommerce/{id}', [CommerceController::class, 'formModifyCommerce'])->name('commerce.formModifyCommerce');
+
+// Routes pour les catégories de dépense
+Route::get('/categorie-depense', [CategorieDepenseController::class, 'index'])->name('categorieDepense.index');
+Route::post('/categorie-depense/add', [CategorieDepenseController::class, 'add'])->name('categorieDepense.add');
+Route::delete('/categorie-depense/delete/{id}', [CategorieDepenseController::class, 'delete'])->name('categorieDepense.delete');
+Route::delete('/categorie-depense/clear', [CategorieDepenseController::class, 'clear'])->name('categorieDepense.clear');
+Route::get('/categorie-depense/formModifyCategorieDepense/{id}', [CategorieDepenseController::class, 'formModifyCategorieDepense'])->name('categorieDepense.formModifyCategorieDepense');
+Route::post('/categorie-depense/update/{id}', [CategorieDepenseController::class, 'update'])->name('categorieDepense.update');
