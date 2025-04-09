@@ -36,3 +36,11 @@ Route::delete('/expense/delete/{id}', [ExpenseController::class, 'delete'])->nam
 Route::delete('/expense/clear', [ExpenseController::class, 'clear'])->name('expense.clear');
 Route::get('/expense/formModifyExpense/{id}', [ExpenseController::class, 'formModifyExpense'])->name('expense.formModifyExpense');
 Route::post('/expense/update/{id}', [ExpenseController::class, 'update'])->name('expense.update');
+
+//les Request on les fait pas dans lurl
+Route::get('/Commerces', [CommerceController::class, 'index'])->name('commerce.index');
+Route::delete('/commerce/clear', [CommerceController::class, 'clear'])->name('commerce.clear');
+Route::delete('/commerce/delete/{id}',[CommerceController::class,'delete'])->name('commerce.delete');
+Route::post('/commerce/add',[CommerceController::class,'add'])->name('commerce.add');
+Route::post('/commerce/update/{id}',[CommerceController::class,'update'])->name('commerce.update');
+Route::get('/commerce/formModifyCommerce/{id}', [CommerceController::class, 'formModifyCommerce'])->name('commerce.formModifyCommerce');
