@@ -5,6 +5,7 @@ use App\Http\Controllers\NurseryController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\CommerceController;
 use App\Http\Controllers\CategorieDepenseController;
+use App\Http\Controllers\ChildController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,6 @@ use App\Http\Controllers\CategorieDepenseController;
 |
 */
 //Route::post('/posts/update/{id}',[PostController::class,'updatePost'])->name('posts.update');
-
 
 Route::get('/', [NurseryController::class, 'index'])->name('nursery.index');
 Route::get('/Nurseries', [NurseryController::class, 'index'])->name('Nurseries');
@@ -52,3 +52,11 @@ Route::delete('/categorie-depense/delete/{id}', [CategorieDepenseController::cla
 Route::delete('/categorie-depense/clear', [CategorieDepenseController::class, 'clear'])->name('categorieDepense.clear');
 Route::get('/categorie-depense/formModifyCategorieDepense/{id}', [CategorieDepenseController::class, 'formModifyCategorieDepense'])->name('categorieDepense.formModifyCategorieDepense');
 Route::post('/categorie-depense/update/{id}', [CategorieDepenseController::class, 'update'])->name('categorieDepense.update');
+
+// Routes pour les enfants
+Route::get('/children', [ChildController::class, 'index'])->name('child.index');
+Route::post('/child/add', [ChildController::class, 'add'])->name('child.add');
+Route::delete('/child/delete/{id}', [ChildController::class, 'delete'])->name('child.delete');
+Route::delete('/child/clear', [ChildController::class, 'clear'])->name('child.clear');
+Route::get('/child/formModifyChild/{id}', [ChildController::class, 'formModifyChild'])->name('child.formModifyChild');
+Route::post('/child/update/{id}', [ChildController::class, 'update'])->name('child.update');
