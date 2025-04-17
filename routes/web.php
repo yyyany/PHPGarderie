@@ -6,6 +6,7 @@ use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\CommerceController;
 use App\Http\Controllers\CategorieDepenseController;
 use App\Http\Controllers\ChildController;
+use App\Http\Controllers\EducatorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,3 +61,12 @@ Route::delete('/child/delete/{id}', [ChildController::class, 'delete'])->name('c
 Route::delete('/child/clear', [ChildController::class, 'clear'])->name('child.clear');
 Route::get('/child/formModifyChild/{id}', [ChildController::class, 'formModifyChild'])->name('child.formModifyChild');
 Route::post('/child/update/{id}', [ChildController::class, 'update'])->name('child.update');
+
+
+//Routes pour les educateurs
+Route::get('/educator', [EducatorController::class, 'index'])->name('educator.index');
+Route::post('/educator/add', [EducatorController::class, 'add'])->name('educator.add');
+Route::delete('/educator/delete/{id}', [EducatorController::class, 'delete'])->name('educator.delete');
+Route::delete('/educator/clear', [EducatorController::class, 'clear'])->name('educator.clear');
+Route::get('/educator/formModifyEducator/{id}', [EducatorController::class, 'formModifyEducator'])->name('educator.formModifyEducator');
+Route::post('/educator/update/{id}', [EducatorController::class, 'update'])->name('educator.update');

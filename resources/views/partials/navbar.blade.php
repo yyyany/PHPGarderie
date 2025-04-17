@@ -4,7 +4,7 @@
     <a href="{{ route('commerce.index') }}">Commerces</a>
     <a href="{{ route('categorieDepense.index') }}">Catégories de dépense</a>
     <a href="{{ route('child.index') }}">Enfants</a>
-    <a href="">Éducateurs</a>
+    <a href="{{ route('educator.index')}}">Éducateurs</a>
     <a href="">Présences</a>
     <a href="">Rapport</a>
 </nav>
