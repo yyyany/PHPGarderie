@@ -10,7 +10,7 @@ use App\Http\Controllers\EducatorController;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Web Routess
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
