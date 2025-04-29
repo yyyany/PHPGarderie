@@ -6,6 +6,7 @@ use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\CommerceController;
 use App\Http\Controllers\CategorieDepenseController;
 use App\Http\Controllers\ChildController;
+use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\EducatorController;
 
 /*
@@ -70,3 +71,9 @@ Route::delete('/educator/delete/{id}', [EducatorController::class, 'delete'])->n
 Route::delete('/educator/clear', [EducatorController::class, 'clear'])->name('educator.clear');
 Route::get('/educator/formModifyEducator/{id}', [EducatorController::class, 'formModifyEducator'])->name('educator.formModifyEducator');
 Route::post('/educator/update/{id}', [EducatorController::class, 'update'])->name('educator.update');
+
+//Routes pour les présences
+Route::get('/presence', [PresenceController::class, 'index'])->name('presence.index');
+Route::post('/presence/add', [PresenceController::class, 'add'])->name('presence.add');
+Route::delete('/presence/delete/{id}', [PresenceController::class, 'delete'])->name('presence.delete');
+Route::delete('/presence/clear', [PresenceController::class, 'clear'])->name('presence.clear');
