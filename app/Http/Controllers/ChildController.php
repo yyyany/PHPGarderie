@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Child;
+use App\Models\Presences;
 
 class ChildController extends Controller
 {
@@ -34,7 +35,13 @@ class ChildController extends Controller
         if (!$child) {
             return redirect()->route('child.index')->with('error', 'L\'enfant demandé n\'existe pas');
         }
-        return view('childModify', ['child' => $child]);
+        // Récupérer les présences de l'enfant
+        $presences = Presences::where('child_id', $id)->get();
+        
+        return view('childModify', [
+            'child' => $child,
+            'presences' => $presences
+        ]);
     }
 
     public function update($id, Request $request)

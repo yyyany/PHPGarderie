@@ -8,7 +8,7 @@
 <div class="container">
     <h1 class="mb-4">Gestion des présences</h1>
 <div class="form-group mb-4">
-    <form method="GET" action="{{ route('expense.index') }}">
+    <form method="GET" action="{{ route('presence.index') }}">
         <select class="form-control" id="name_nursery" name="name_nursery" onchange="this.form.submit()">
             @foreach($nurseries as $nursery)    
                 <option value="{{ $nursery->name }}" {{ isset($nurseryName) && $nurseryName == $nursery->name ? 'selected' : '' }}>
@@ -34,7 +34,7 @@
                         <form action="{{ route('presence.clear') }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Voulez-vous vraiment vider la liste des dépenses ?');">
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Voulez-vous vraiment vider la liste des présences ?');">
                                 <i class="fas fa-trash-alt"></i> Vider la liste
                             </button>
                         </form>
@@ -85,7 +85,7 @@
                         <label for="child_description">Enfant :</label>
                         <select id="child_description" name="child_description" class="form-control">
                             @foreach ($children as $child)
-                                <option value="{{ $child->nom }}">{{ $child->nom }}{{ $child->nom }} {{ $child->prenom }} {{ $child->date_naissance }}</option>
+                                <option value="{{ $child->nom }}">{{ $child->nom }} {{ $child->prenom }} {{ $child->date_naissance }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -98,10 +98,7 @@
                             @foreach ($educators as $educator)
                                 <option value="{{ $educator->LastName }}">{{ $educator->LastName }} {{ $educator->FirstName }} {{ $educator->BirthDayDate }}</option>
                             @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+                        </select>
                     </div>
                 </div>
             </div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Child;
 use App\Models\State;
 use App\Models\Educators;
+use App\Models\Presences;
 
 class EducatorController extends Controller
 {
@@ -38,11 +39,19 @@ class EducatorController extends Controller
     public function formModifyEducator($id)
     {
         $educator = Educators::find($id);
-        $states=State::all();
+        $states = State::all();
         if (!$educator) {
-            return redirect()->route('educator.index')->with('error', 'L\'enfant demandé n\'existe pas');
+            return redirect()->route('educator.index')->with('error', 'L\'éducateur demandé n\'existe pas');
         }
-        return view('EducatorModify', ['educator' => $educator],['states'=>$states]);
+        
+        // Récupérer les présences de l'éducateur
+        $presences = Presences::where('educator_id', $id)->get();
+        
+        return view('EducatorModify', [
+            'educator' => $educator,
+            'states' => $states,
+            'presences' => $presences
+        ]);
     }
 
     public function update($id, Request $request)

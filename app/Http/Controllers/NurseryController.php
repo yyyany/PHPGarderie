@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Nursery;
 use App\Models\State;
+use App\Models\Presences;
+
 class NurseryController extends Controller
 {
     public function index(){
@@ -37,11 +39,19 @@ class NurseryController extends Controller
     }
     public function formModifyNursery($id){
         $nurseryFind = Nursery::find($id);
-        $states=State::all();
+        $states = State::all();
         if (!$nurseryFind) {
-            return redirect()->route('nursery.index')->with('error', 'Le post demandé n\'existe pas');
+            return redirect()->route('nursery.index')->with('error', 'La garderie demandée n\'existe pas');
         }
-        return view('nurseryModify', ['nursery' => $nurseryFind],['states' => $states]);
+        
+        // Récupérer les présences de la garderie
+        $presences = Presences::where('nursery_id', $id)->get();
+        
+        return view('nurseryModify', [
+            'nursery' => $nurseryFind,
+            'states' => $states,
+            'presences' => $presences
+        ]);
     }
     public function update($id,Request $request){
         $nurseryFind = Nursery::find($id);
