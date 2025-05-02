@@ -38,7 +38,7 @@ class Presences extends Model
         }
 
     /**
-     * Get the category that owns the expense.
+     * Get the nursery that owns the presence.
      */
     public function Nursery()
     {

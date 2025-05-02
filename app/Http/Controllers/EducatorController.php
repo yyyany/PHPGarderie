@@ -44,7 +44,7 @@ class EducatorController extends Controller
             return redirect()->route('educator.index')->with('error', 'L\'éducateur demandé n\'existe pas');
         }
         
-        // Récupérer les présences de l'éducateur
+        // Get educator's presences
         $presences = Presences::where('educator_id', $id)->get();
         
         return view('EducatorModify', [
