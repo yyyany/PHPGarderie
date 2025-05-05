@@ -14,14 +14,17 @@ class ExpenseController extends Controller
     public function index(Request $request){
         // Si aucune garderie n'est sélectionnée, on prend la première par défaut
         $firstNursery = Nursery::first();
-        $defaultNurseryName = $firstNursery ? $firstNursery->name : '';
+        $defaultNurseryId = $firstNursery ? $firstNursery->id : null;
         
-        // Utiliser state_name s'il existe, sinon utiliser la première garderie
-        $nursery_description = $request->state_name ?? $defaultNurseryName;
+        // Utiliser nursery_id s'il existe, sinon utiliser la première garderie
+        $nursery_id = $request->nursery_id ?? $defaultNurseryId;
         
-        $nursery_id = Nursery::where('name', $nursery_description)->pluck('id')->first();
-        $expenses = $nursery_id 
-            ? Expense::where('nursery_id', $nursery_id)->get() 
+        // Récupérer la garderie sélectionnée
+        $selectedNursery = Nursery::find($nursery_id);
+        
+        // Récupérer les dépenses de la garderie sélectionnée
+        $expenses = $selectedNursery 
+            ? Expense::where('nursery_id', $selectedNursery->id)->get() 
             : Expense::all();
             
         $nurseries = Nursery::all();
@@ -32,7 +35,7 @@ class ExpenseController extends Controller
             'nurseries' => $nurseries,
             'commerces' => $commerces,
             'categoriesExpenses' => $categoriesExpenses,
-            'nurseryName' => $nursery_description
+            'selectedNursery' => $selectedNursery
         ]);
     }
     
@@ -41,12 +44,13 @@ class ExpenseController extends Controller
         $amount = $request->amount;
         $category_name = $request->category_name;
         $expense_commerce_name = $request->expense_commerce_name;
-        $nursery_name= $request->nursery_name;
-        if ($category_name && $expense_commerce_name && $nursery_name) {
+        $nursery_id = $request->nursery_id;
+        
+        if ($category_name && $expense_commerce_name && $nursery_id) {
             // Récupérer les IDs à partir des descriptions
             $commerce_id = Commerce::where('description', $expense_commerce_name)->value('id');
             $category_id = CategorieDepense::where('description', $category_name)->value('id');
-            $nursery_id=Nursery::where('name', $nursery_name)->pluck('id')->first();
+            
             // Créer la dépense
             Expense::create([
                 'dateTime' => now(),

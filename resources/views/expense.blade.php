@@ -9,9 +9,10 @@
     <h1 class="mb-4">Gestion des dépenses</h1>
 <div class="form-group mb-4">
     <form method="GET" action="{{ route('expense.index') }}">
-        <select class="form-control" id="name_nursery" name="name_nursery" onchange="this.form.submit()">
+        <label for="nursery_id">Sélectionner une garderie :</label>
+        <select class="form-control" id="nursery_id" name="nursery_id" onchange="this.form.submit()">
             @foreach($nurseries as $nursery)    
-                <option value="{{ $nursery->name }}" {{ isset($nurseryName) && $nurseryName == $nursery->name ? 'selected' : '' }}>
+                <option value="{{ $nursery->id }}" {{ isset($selectedNursery) && $selectedNursery->id == $nursery->id ? 'selected' : '' }}>
                     {{ $nursery->name }}
                 </option>
             @endforeach
@@ -72,7 +73,7 @@
         <h2 class="mb-3">Ajouter une nouvelle dépense</h2>
         <form action="{{ route('expense.add') }}" method="POST">
             @csrf
-            <input type="hidden" name="nursery_name" value="{{ $nurseryName }}">
+            <input type="hidden" name="nursery_id" value="{{ $selectedNursery ? $selectedNursery->id : '' }}">
             
             <div class="row">
                 <div class="col-md-4">
