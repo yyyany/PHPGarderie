@@ -8,6 +8,7 @@ use App\Http\Controllers\CategorieDepenseController;
 use App\Http\Controllers\ChildController;
 use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\EducatorController;
+use App\Http\Controllers\StateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,3 +78,9 @@ Route::get('/presence', [PresenceController::class, 'index'])->name('presence.in
 Route::post('/presence/add', [PresenceController::class, 'add'])->name('presence.add');
 Route::delete('/presence/delete/{id}', [PresenceController::class, 'delete'])->name('presence.delete');
 Route::delete('/presence/clear', [PresenceController::class, 'clear'])->name('presence.clear');
+
+// Routes pour les provinces
+Route::get('/states', [StateController::class, 'index'])->name('states.index');
+Route::post('/states/store', [StateController::class, 'store'])->name('states.store');
+Route::delete('/states/destroy/{id}', [StateController::class, 'destroy'])->name('states.destroy');
+Route::delete('/states/clear', [StateController::class, 'clear'])->name('states.clear');

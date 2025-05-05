@@ -19,6 +19,6 @@ class State extends Model
         'description',
     ];
     public function nursery(){
-        return $this->hasMany(Nursery::class);
+        return $this->hasMany(Nursery::class, 'id_state');
     }
 }
