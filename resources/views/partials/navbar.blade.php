@@ -7,7 +7,7 @@
     <a href="{{ route('educator.index')}}">Éducateurs</a>
     <a href="{{ route('presence.index')}}">Présences</a>
     <a href="{{ route('states.index')}}">Provinces</a>
-    <a href="">Rapport</a>
+    <a href="{{ route('rapport.index')}}">Rapport</a>
 </nav>
 
 

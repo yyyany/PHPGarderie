@@ -9,6 +9,7 @@ use App\Http\Controllers\ChildController;
 use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\EducatorController;
 use App\Http\Controllers\StateController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,3 +85,7 @@ Route::get('/states', [StateController::class, 'index'])->name('states.index');
 Route::post('/states/store', [StateController::class, 'store'])->name('states.store');
 Route::delete('/states/destroy/{id}', [StateController::class, 'destroy'])->name('states.destroy');
 Route::delete('/states/clear', [StateController::class, 'clear'])->name('states.clear');
+
+// Routes pour les rapports
+Route::get('/rapport', [ReportController::class, 'index'])->name('rapport.index');
+Route::post('/rapport/generate', [ReportController::class, 'generate'])->name('rapport.generate');
